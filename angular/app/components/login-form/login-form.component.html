@@ -1,0 +1,17 @@
+<form ng-submit="vm.login()">
+	<div>
+		<md-input-container class="LoginForm-inputContainer">
+			<label translate>LOGIN.EMAIL</label>
+			<input type="email" ng-model="vm.email">
+		</md-input-container>
+	</div>
+
+	<div>
+		<md-input-container class="LoginForm-inputContainer">
+			<label translate>LOGIN.PASSWORD</label>
+			<input type="password" ng-model="vm.password">
+		</md-input-container>
+	</div>
+
+	<md-button type="submit" class="LoginForm-submit md-primary md-raised">{{'LOGIN.LOG_IN' | translate}}</md-button>
+</form>

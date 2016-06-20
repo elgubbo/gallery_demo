@@ -1,0 +1,24 @@
+<form ng-submit="vm.register()">
+	<div>
+		<md-input-container class="RegisterForm-inputContainer">
+			<label translate>REGISTER.USERNAME</label>
+			<input type="text" ng-model="vm.name">
+		</md-input-container>
+	</div>
+
+	<div>
+		<md-input-container class="RegisterForm-inputContainer">
+			<label translate>REGISTER.EMAIL</label>
+			<input type="email" ng-model="vm.email">
+		</md-input-container>
+	</div>
+
+	<div>
+		<md-input-container class="RegisterForm-inputContainer">
+			<label translate>REGISTER.PASSWORD</label>
+			<input type="password" ng-model="vm.password">
+		</md-input-container>
+	</div>
+
+	<md-button type="submit" class="RegisterForm-submit md-primary md-raised">{{'REGISTER.REGISTER' | translate}}</md-button>
+</form>
