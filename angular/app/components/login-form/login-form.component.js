@@ -6,10 +6,10 @@ class LoginFormController {
 		this.ToastService = ToastService;
 	}
 
-    $onInit(){
-        this.email = '';
-        this.password = '';
-    }
+  $onInit(){
+      this.email = '';
+      this.password = '';
+  }
 
 	login() {
 		let user = {

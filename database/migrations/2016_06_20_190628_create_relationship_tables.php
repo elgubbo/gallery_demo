@@ -13,22 +13,26 @@ class CreateRelationshipTables extends Migration
     public function up()
     {
         Schema::create('gallery_image', function (Blueprint $table) {
-            $table->integer('gallery_id');
-            $table->integer('image_id');
+            $table->engine = 'InnoDB';
 
-            $table->foreign('gallery_id')->references('id')->on('galleries')->onDelete('cascade');
-            $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade');
-
+            $table->integer('gallery_id')->unsigned();
+            $table->integer('image_id')->unsigned();
             $table->timestamps();
         });
+        Schema::table('gallery_image', function (Blueprint $table) {
+            $table->foreign('gallery_id')->references('id')->on('galleries')->onDelete('cascade');
+            $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade');
+        });
         Schema::create('image_tag', function (Blueprint $table) {
-            $table->integer('tag_id');
-            $table->integer('image_id');
+            $table->engine = 'InnoDB';
 
+            $table->integer('tag_id')->unsigned();
+            $table->integer('image_id')->unsigned();
+            $table->timestamps();
+        });
+        Schema::table('image_tag', function (Blueprint $table) {
             $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
             $table->foreign('image_id')->references('id')->on('images')->onDelete('cascade');
-
-            $table->timestamps();
         });
     }
 
@@ -37,12 +41,16 @@ class CreateRelationshipTables extends Migration
      *
      * @return void
      */
-    public function down(Blueprint $table)
+    public function down()
     {
-        $table->dropForeign('gallery_image_gallery_id_foreign');
-        $table->dropForeign('gallery_image_image_id_foreign');
-        $table->dropForeign('image_tag_image_id_foreign');
-        $table->dropForeign('image_tag_tag_id_foreign');
+        Schema::table('gallery_image', function ($table) {
+            $table->dropForeign('gallery_image_gallery_id_foreign');
+            $table->dropForeign('gallery_image_image_id_foreign');
+        });
+        Schema::table('image_tag', function ($table) {
+            $table->dropForeign('image_tag_image_id_foreign');
+            $table->dropForeign('image_tag_tag_id_foreign');
+        });
         Schema::drop('gallery_image');
         Schema::drop('image_tag');
     }

@@ -24,8 +24,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function comments()
+    public function galleries()
     {
         return $this->hasMany('App\Gallery');
+    }
+
+    public function images()
+    {
+        return $this->hasMany('App\Image');
     }
 }

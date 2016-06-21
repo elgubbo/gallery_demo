@@ -5,7 +5,8 @@ export function TranslateConfig($translateProvider) {
     'LOGIN': {
       'EMAIL' : 'E-Mail',
       'PASSWORD' : 'Password',
-      'LOG_IN' : 'Log in'
+      'LOG_IN' : 'Log in',
+      'GREETING': 'Melde dich an'
     },
     'REGISTER': {
       'GREETING' : 'Create your account',
@@ -13,6 +14,10 @@ export function TranslateConfig($translateProvider) {
       'EMAIL' : 'E-Mail',
       'PASSWORD' : 'Password',
       'REGISTER' : 'Log in'
+    },
+    'HEADER': {
+      'GALLERIES': 'My Galleries',
+      'IMAGES': 'My Photos'
     }
   });
 
@@ -20,7 +25,8 @@ export function TranslateConfig($translateProvider) {
     'LOGIN': {
       'EMAIL' : 'E-Mail',
       'PASSWORD' : 'Passwort',
-      'LOG_IN' : 'Einloggen'
+      'LOG_IN' : 'Einloggen',
+      'GREETING': 'Melde dich an'
     },
     'REGISTER': {
       'GREETING' : 'Account anlegen',
@@ -28,6 +34,10 @@ export function TranslateConfig($translateProvider) {
       'EMAIL' : 'E-Mail',
       'PASSWORD' : 'Passwort',
       'REGISTER' : 'Einloggen'
+    },
+    'HEADER': {
+      'GALLERIES': 'Meine Alben',
+      'IMAGES': 'Meine Bilder'
     }
   });
 
