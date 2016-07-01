@@ -33,6 +33,17 @@ class AuthController extends Controller
         return response()->success(compact('user', 'token'));
     }
 
+    public function profile()
+    {
+        return Auth::user() ? response()->success(Auth::user()) : response()->error('Not logged in');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return response()->success('Successfully logged out');
+    }
+
     public function register(Request $request)
     {
         $this->validate($request, [

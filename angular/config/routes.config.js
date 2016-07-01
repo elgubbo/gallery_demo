@@ -21,12 +21,21 @@ export function RoutesConfig($stateProvider, $urlRouterProvider) {
              main: {}
            }
          })
-  .state('app.landing', {
+  .state('app.images', {
     data: {auth: true},
     url: '/',
     views: {
       'main@': {
-        templateUrl: getView('landing')
+        templateUrl: getView('images')
+      }
+    }
+  })
+  .state('app.image', {
+    data: {auth: true},
+    url: '/image/:id',
+    views: {
+      'main@': {
+        templateUrl: getView('update-image')
       }
     }
   })

@@ -1,0 +1,14 @@
+<div flex>
+     <h4 translate>UPLOAD.HELP</h4>
+    <form name="vm.uploadForm">
+      <div ngf-drop="vm.uploadFiles($files)" ngf-max-size="8MB" ngf-pattern="'image/*'"
+        ngf-accept="'image/*'" ngf-max-size="'8MB'" ngf-max-total-size="'8MB'" class="UploadImage-dropbox md-item-text"
+        ngf-drag-over-class="'dragover'" ngf-multiple="true" translate>
+        UPLOAD.DROP
+        </div>
+
+      <button class="md-button md-raised" ngf-select="vm.uploadFiles($files)" multiple
+              accept="image/*" ngf-pattern="'image/*'"
+              ngf-accept="'image/*'" ngf-max-size="'8MB'" ngf-max-total-size="'8MB'" translate>UPLOAD.SELECT</button>
+    </form>
+</div>

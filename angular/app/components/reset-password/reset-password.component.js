@@ -24,7 +24,7 @@ class ResetPasswordController {
         }).then(() => {
             this.isValidToken = true;
         }, () => {
-            this.$state.go('app.landing');
+            this.$state.go('app.images');
         });
     }
 

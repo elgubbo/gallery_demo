@@ -3,6 +3,14 @@
   "authors": [
     "Jad Joubran <jad@jadjoubran.com>"
   ],
+  "overrides": {
+    "outlayer": {
+      "main": [
+        "item.js",
+        "outlayer.js"
+      ]
+    }
+  },
   "ignore": [
     "**/.*",
     "node_modules",
@@ -19,6 +27,10 @@
     "angular-loading-bar": "~0.8.0",
     "satellizer": "^0.14.0",
     "angular-translate": "^2.11.0",
-    "angular-sanitize": "^1.5.7"
+    "angular-sanitize": "^1.5.7",
+    "angular-file-upload": "^2.3.4",
+    "ng-file-upload": "^12.0.4",
+    "angular-masonry": "^0.16.0",
+    "animate.css": "^3.5.2"
   }
 }

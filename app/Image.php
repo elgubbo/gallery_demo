@@ -15,4 +15,9 @@ class Image extends Model
     {
         return $this->belongsToMany('App\Gallery', 'gallery_image', 'image_id', 'gallery_id');
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag', 'image_tag', 'image_id', 'tag_id');
+    }
 }

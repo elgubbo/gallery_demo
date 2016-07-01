@@ -1,7 +1,7 @@
 ngDescribe({
-    name: 'Test gallery-gallery component',
+    name: 'Test masonry-hack directive',
     modules: 'app',
-    element: '<gallery-gallery></gallery-gallery>',
+    element: '',
     tests: function (deps) {
 
         it('basic test', () => {

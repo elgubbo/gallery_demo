@@ -1,0 +1,38 @@
+
+<form ng-submit="vm.save()">
+  <div>
+    <md-input-container class="UpdateForm-inputContainer">
+      <label translate>UPDATE.NAME</label>
+      <input ng-model="vm.image.name">
+    </md-input-container>
+  </div>
+
+  <div>
+    <md-input-container class="UpdateForm-inputContainer">
+      <label translate>UPDATE.DESCRIPTION</label>
+      <input ng-model="vm.image.description">
+    </md-input-container>
+  </div>
+
+  <div>
+    <md-chips ng-model="vm.image.tags" md-autocomplete-snap
+              md-transform-chip="vm.transformChip($chip)"
+              md-require-match="false">
+      <md-autocomplete
+          md-selected-item="vm.selectedTag"
+          md-search-text="vm.tagSearchText"
+          md-items="tag in vm.tagQuerySearch(vm.tagSearchText)"
+          md-item-text="item.name"
+          placeholder="{{vm.$translate.instant('UPDATE.SEARCHTAG')}}">
+        <span md-highlight-text="vm.tagSearchText">{{tag.name}}</span>
+      </md-autocomplete>
+      <md-chip-template>
+        <span>
+          <strong>{{$chip.name}}</strong>
+        </span>
+      </md-chip-template>
+    </md-chips>
+  </div>
+
+  <md-button type="submit" class="UpdateForm-submit md-primary md-raised">{{'UPDATE.SAVE' | translate}}</md-button>
+</form>

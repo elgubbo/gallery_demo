@@ -1,9 +1,12 @@
 class LoginFormController {
-	constructor($auth, ToastService) {
+	constructor($auth, ToastService, $translate, $state, UserService) {
 		'ngInject';
 
 		this.$auth = $auth;
 		this.ToastService = ToastService;
+    this.$translate = $translate;
+    this.$state = $state;
+    this.UserService = UserService;
 	}
 
   $onInit(){
@@ -17,23 +20,12 @@ class LoginFormController {
 			password: this.password
 		};
 
-		this.$auth.login(user)
-			.then((response) => {
-				this.$auth.setToken(response.data);
-
-				this.ToastService.show('Logged in successfully.');
+		this.UserService.login(user)
+			.then(() => {
+        this.$state.go('app.images');
 			})
-			.catch(this.failedLogin.bind(this));
 	}
 
-	failedLogin(response) {
-		if (response.status === 422) {
-			for (let error in response.data.errors) {
-				return this.ToastService.error(response.data.errors[error][0]);
-			}
-		}
-		this.ToastService.error(response.statusText);
-	}
 }
 
 export const LoginFormComponent = {

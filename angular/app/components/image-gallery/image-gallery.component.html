@@ -1,0 +1,23 @@
+<div layout="row">
+  <div flex="20" class="animate-show" ng-click="imageGallery.showMessage=false" ng-show="imageGallery.showMessage">click to show</div>
+  <div flex="20" layout="column">
+    <md-input-container class="md-block" flex-gt-sm>
+      <label translate>GALLERY.SEARCH</label>
+      <input ng-model="imageGallery.searchQuery">
+    </md-input-container>
+  </div>
+  <div layout="column" flex="20">
+    <md-button class="md-raised md-primary" ng-click="imageGallery.search()">{{'GALLERY.SEARCH' | translate}}</md-button>
+  </div>
+  <div layout="column" flex="15">
+    <md-button class="md-raised" ng-show="imageGallery.searched" ng-click="imageGallery.resetSearch()">{{'GALLERY.RESETSEARCH' | translate}}</md-button>
+  </div>
+</div>
+<div class='md-padding' layout="row" flex>
+  <div layout="row" flex>
+    <div class="" translate ng-if="(imageGallery.ImageService.unpartitionedImages.length == 0) && (!imageGallery.searchQuery.length)">GALLERY.NOIMAGES</div>
+    <div layout="column" ng-repeat="imageColumn in imageGallery.ImageService.userImages" flex>
+      <image-card layout="column" image="image" grid="true" ng-repeat="image in imageColumn"></image-card>
+    </div>
+  </div>
+</div>

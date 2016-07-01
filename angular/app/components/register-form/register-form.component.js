@@ -1,9 +1,12 @@
 class RegisterFormController {
-  constructor($auth, ToastService) {
+  constructor($auth, ToastService, $state, $translate, UserService) {
     'ngInject';
 
     this.$auth = $auth;
     this.ToastService = ToastService;
+    this.$state = $state;
+    this.$translate = $translate;
+    this.UserService = UserService;
   }
 
   $onInit(){
@@ -19,26 +22,12 @@ class RegisterFormController {
       password: this.password
     };
 
-    this.$auth.signup(user)
-      .then((response) => {
-        //remove this if you require email verification
-        this.$auth.setToken(response.data);
-
-        this.ToastService.show('Successfully registered.');
+    this.UserService.register(user)
+      .then(() => {
+        this.$state.go('app.images');
       })
-      .catch(this.failedRegistration.bind(this));
   }
 
-
-
-  failedRegistration(response) {
-    if (response.status === 422) {
-      for (let error in response.data.errors) {
-        return this.ToastService.error(response.data.errors[error][0]);
-      }
-    }
-    this.ToastService.error(response.statusText);
-  }
 }
 
 export const RegisterFormComponent = {

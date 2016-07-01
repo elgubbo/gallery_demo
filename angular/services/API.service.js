@@ -1,5 +1,5 @@
 export class APIService {
-  constructor(Restangular, ToastService, $window) {
+  constructor(Restangular, ToastService, $window, $state) {
     'ngInject';
     //content negotiation
     let headers = {
@@ -13,20 +13,25 @@ export class APIService {
         .setDefaultHeaders(headers)
         .setErrorInterceptor(function(response) {
           if (response.status === 422 || response.status === 401) {
-            for (let error in response.data.errors) {
-              return ToastService.error(response.data.errors[error][0]);
-            }
+            $state.go('app.login');
+            return ToastService.show(response.data.message);
           }
           if (response.status === 500) {
-            return ToastService.error(response.statusText)
+            return ToastService.show(response.statusText)
           }
         })
-        .addFullRequestInterceptor(function(element, operation, what, url, headers) {
+        .addFullRequestInterceptor((element, operation, what, url, headers) => {
           let token = $window.localStorage.satellizer_token;
           if (token) {
             headers.Authorization = 'Bearer ' + token;
           }
-        });
+        })
+        .addResponseInterceptor((data) => {
+          let extractedData;
+          extractedData = data.data;
+
+          return extractedData;
+        })
     });
   }
 }

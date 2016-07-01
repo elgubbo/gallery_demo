@@ -1,0 +1,22 @@
+<md-card class="no-overflow animate-show" ng-show="vm.imageLoaded">
+  <div class="image-container">
+    <img secure-src="{{vm.imageUrl}}" loaded-model="vm.imageLoaded" class="md-card-image fit-image" alt="{{vm.image.name}}">
+  </div>
+  <md-card-title>
+    <md-card-title-text>
+    <span class="md-subhead">{{vm.image.name}}</span>
+    <span class="md-subhead">{{vm.image.description}}</span>
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-content>
+    <md-chips ng-model="vm.image.tags" name="name" readonly="true">
+      <md-chip-template>
+        <strong>{{$chip.name}}</strong>
+      </md-chip-template>
+    </md-chips>
+  </md-card-content>
+  <md-card-actions layout="row" layout-align="start center">
+    <md-button flex class="md-raised" ui-sref="app.image({id: vm.image.id})">{{'CARD.EDIT' | translate}}</md-button>
+    <md-button flex class="md-raised md-warn" ng-click="vm.delete($event)">{{'CARD.DELETE' | translate}}</md-button>
+  </md-card-actions>
+</md-card>

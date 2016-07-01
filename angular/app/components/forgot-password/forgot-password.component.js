@@ -16,7 +16,7 @@ class ForgotPasswordController {
             email: this.email
         }).then(() => {
             this.ToastService.show(`Please check your email for instructions on how to reset your password.`);
-            this.$state.go('app.landing');
+            this.$state.go('app.login');
         });
     }
 }

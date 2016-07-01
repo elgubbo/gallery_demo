@@ -6,7 +6,7 @@ ngDescribe({
     http: {
         post: {
             '/api/auth/password/email': {
-                data: true
+                data:true
             }
         }
     },

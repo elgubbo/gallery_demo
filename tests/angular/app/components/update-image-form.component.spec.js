@@ -1,7 +1,7 @@
 ngDescribe({
-    name: 'Test gallery-gallery component',
+    name: 'Test update-image-form component',
     modules: 'app',
-    element: '<gallery-gallery></gallery-gallery>',
+    element: '<update-image-form></update-image-form>',
     tests: function (deps) {
 
         it('basic test', () => {

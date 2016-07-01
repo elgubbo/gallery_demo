@@ -25,18 +25,28 @@ $api->group(['middleware' => ['api']], function ($api) {
     // Authentication Routes...
     $api->post('auth/login', 'Auth\AuthController@login');
     $api->post('auth/register', 'Auth\AuthController@register');
-
     // Password Reset Routes...
     $api->post('auth/password/email', 'Auth\PasswordResetController@sendResetLinkEmail');
     $api->get('auth/password/verify', 'Auth\PasswordResetController@verify');
     $api->post('auth/password/reset', 'Auth\PasswordResetController@reset');
 
-    //Image routes
-    $api->post('images', 'ImageController@create');
 
 });
 
 //protected API routes with JWT (must be logged in)
-$api->group(['middleware' => ['api', 'api.auth']], function ($api) {
+//these routes will refresh the token, so the user can be logged in up to two weeks (see config/jwt.php)
+$api->group(['middleware' => ['api', 'api.auth', 'jwt.refresh']], function ($api) {
+    $api->get('auth/profile', 'Auth\AuthController@profile');
+    //Image routes
+    $api->post('images', 'ImageController@create');
+    $api->put('images/{id}', 'ImageController@update');
+    $api->post('images/{id}', 'ImageController@update');
+    $api->get('images', 'ImageController@listImages');
+    $api->get('images/{id}', 'ImageController@getImageById');
+    $api->get('images/{id}/file', 'ImageController@getImageFile');
+    $api->delete('images/{id}', 'ImageController@deleteImage');
+
+    //Tag routes
+    $api->get('tags', 'TagController@listTags');
 
 });
