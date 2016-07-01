@@ -100,7 +100,6 @@ class ImageController extends Controller
     public function listImages(Request $request)
     {
         $user = Auth::user();
-        $input = $request->input();
         if ($request->has('tag')) {
             $tag = $request->tag;
             $images = Image::with('tags')

@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{!! elixir('css/app.css') !!}">
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
 
-    <title>CoSee Gallery</title>
+    <title>Gallery</title>
 
     <!--[if lte IE 10]>
     <script type="text/javascript">document.location.href = '/unsupported-browser'</script>
