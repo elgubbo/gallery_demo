@@ -7,7 +7,7 @@ npm install
 
 bower install
 
-#fix database credentials in .env
+fix database credentials in .env
 
 php artisan migrate
 
